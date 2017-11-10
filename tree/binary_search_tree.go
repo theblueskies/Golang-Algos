@@ -1,4 +1,4 @@
-package main
+package bst
 
 import (
 	"fmt"
@@ -77,19 +77,4 @@ func search(node *Node, key int) string {
 		}
 	}
 	return "Not found"
-}
-
-func main() {
-	bst := &BinarySearchTree{}
-
-	bst.Insert(8, "romulus")
-	bst.Insert(5, "greece")
-	bst.Insert(3, "caesar")
-	bst.Insert(7, "pompei")
-	bst.Insert(10, "ronin")
-	bst.Insert(11, "samurai")
-	bst.Insert(9, "gojira")
-
-	bst.InOrderTraverse()
-	fmt.Println(bst.Search(5))
 }
