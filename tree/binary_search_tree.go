@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// Node stores the left and right child, the key and value of a given node.
 type Node struct {
 	key   int
 	value string
@@ -11,10 +12,12 @@ type Node struct {
 	right *Node
 }
 
+//BinarySearchTree stores the root and has method for operating on it.
 type BinarySearchTree struct {
 	root *Node
 }
 
+// Insert stores a key/value pair in a BinarySearchTree
 func (bst *BinarySearchTree) Insert(key int, value string) {
 	newNode := &Node{key: key, value: value}
 	if bst.root == nil {
@@ -40,6 +43,7 @@ func insertNode(currentNode, newNode *Node) {
 	}
 }
 
+//InOrderTraverse traverses a BinarySearchTree in order
 func (bst *BinarySearchTree) InOrderTraverse() {
 	inOrderTraverse(bst.root)
 }
@@ -53,16 +57,39 @@ func inOrderTraverse(node *Node) {
 	}
 }
 
+// Search finds a key in the BinarySearchTree and returns the corresponding value
+func (bst *BinarySearchTree) Search(key int) string {
+	if bst.root != nil {
+		result := search(bst.root, key)
+		return result
+	}
+	return "Tree is empty"
+}
+
+func search(node *Node, key int) string {
+	if node != nil {
+		if key == node.key {
+			return node.value
+		} else if key < node.key {
+			return search(node.left, key)
+		} else if key > node.key {
+			return search(node.right, key)
+		}
+	}
+	return "Not found"
+}
+
 func main() {
 	bst := &BinarySearchTree{}
 
-	bst.Insert(8, "8")
-	bst.Insert(5, "5")
-	bst.Insert(3, "3")
-	bst.Insert(7, "7")
-	bst.Insert(10, "10")
-	bst.Insert(11, "11")
-	bst.Insert(9, "9")
+	bst.Insert(8, "romulus")
+	bst.Insert(5, "greece")
+	bst.Insert(3, "caesar")
+	bst.Insert(7, "pompei")
+	bst.Insert(10, "ronin")
+	bst.Insert(11, "samurai")
+	bst.Insert(9, "gojira")
 
 	bst.InOrderTraverse()
+	fmt.Println(bst.Search(5))
 }
