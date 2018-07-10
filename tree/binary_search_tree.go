@@ -2,6 +2,7 @@ package bst
 
 import (
 	"fmt"
+	"strconv"
 )
 
 // Node stores the left and right child, the key and value of a given node.
@@ -15,6 +16,13 @@ type Node struct {
 //BinarySearchTree stores the root and has method for operating on it.
 type BinarySearchTree struct {
 	root *Node
+}
+
+// BuildTree makes a BST from the list of values
+func (bst *BinarySearchTree) BuildTree(values []int) {
+	for _, v := range values {
+		bst.Insert(v, strconv.Itoa(v))
+	}
 }
 
 // Insert stores a key/value pair in a BinarySearchTree
