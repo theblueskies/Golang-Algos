@@ -5,10 +5,12 @@ func CheckValidBalance(s string) string {
 	brOpenMap := map[string]string{
 		"{": "}",
 		"(": ")",
+		"[": "]",
 	}
 	brCloseMap := map[string]string{
 		"}": "{",
 		")": "(",
+		"]": "[",
 	}
 	var stack []string
 	var d string

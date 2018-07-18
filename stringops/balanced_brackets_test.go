@@ -19,6 +19,9 @@ func TestBalancedBrackets(t *testing.T) {
 		{"{(})", "Invalid"},
 		{"(}{})", "Invalid"},
 		{"{(({}))}", "Valid"},
+		{"{[({})]}", "Valid"},
+		{"](}{})[", "Invalid"},
+		{"", "Valid"},
 	}
 	for _, tt := range flagtests {
 		r := CheckValidBalance(tt.input)
