@@ -1,9 +1,13 @@
 package stringops
 
 func CheckValidBalance(s string) string {
-	brMap := map[string]string{
+	brOpenMap := map[string]string{
 		"{": "}",
+		"(": ")",
+	}
+	brCloseMap := map[string]string{
 		"}": "{",
+		")": "(",
 	}
 	var stack []string
 	var d string
@@ -12,7 +16,9 @@ func CheckValidBalance(s string) string {
 		if len(stack) == 0 {
 			stack = append(stack, string(v))
 			continue
-		} else if v1, ok := brMap[string(v)]; ok {
+		} else if _, ok := brOpenMap[string(v)]; ok {
+			stack = append(stack, string(v))
+		} else if v1, ok := brCloseMap[string(v)]; ok {
 			// This means that the current char is one of the brackets.
 			// We need to check whether the corresponding bracket is in the stack
 			d = stack[len(stack)-1]
