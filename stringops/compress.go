@@ -11,7 +11,7 @@ func Compress(s string) string {
 		return ""
 	}
 	var prev string
-	var buffer bytes.Buffer
+	var buffer bytes.Buffer //faster than concatenation
 	var count int
 	var v rune
 	for _, v = range s {
@@ -27,7 +27,6 @@ func Compress(s string) string {
 	bufWrite(&buffer, prev, count, v)
 
 	return buffer.String()
-
 }
 
 func bufWrite(b *bytes.Buffer, prev string, count int, v rune) (string, int) {
