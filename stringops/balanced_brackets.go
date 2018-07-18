@@ -1,5 +1,6 @@
 package stringops
 
+// CheckValidBalance checks if the order of brackets is valid and balanced
 func CheckValidBalance(s string) string {
 	brOpenMap := map[string]string{
 		"{": "}",
